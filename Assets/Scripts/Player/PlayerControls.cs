@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
     public GameObject otherHalf;
-    public bool isMainChar => _inControl;
+    public bool isMainChar;
+    public bool inControl => _inControl;
 
     private PlayerMotor _motor;
     private bool _inControl;

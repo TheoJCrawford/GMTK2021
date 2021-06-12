@@ -7,7 +7,11 @@ public class PlayerControlsEditor : Editor
     public override void OnInspectorGUI()
     {
         PlayerControls playerControls = (PlayerControls)target;
-        GUILayout.Label("Can Act: " + playerControls.isMainChar);
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Am I the mc?", GUILayout.ExpandWidth());
+        playerControls.isMainChar = GUILayout.Toggle(playerControls.isMainChar, "Am I?");
+        GUILayout.EndHorizontal();
+        GUILayout.Label("Can Act: " + playerControls.inControl);
         GUILayout.BeginHorizontal();
         GUILayout.Label("Jump Limit: ", GUILayout.ExpandWidth(false));
         playerControls.jumpLimit = EditorGUILayout.IntSlider(playerControls.jumpLimit, 1, 10);
