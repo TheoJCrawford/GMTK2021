@@ -1,7 +1,10 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class SlimeController : MonoBehaviour
 {
+    Animator slimeAnim;
     Rigidbody2D slimeRb;
     [SerializeField]
     private float health;
@@ -31,14 +34,23 @@ public class SlimeController : MonoBehaviour
     {
         slimeRb = GetComponent<Rigidbody2D>();
         startPosition = transform.position;
+        slimeAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //Check for a target to chase
         FindTarget();
-
+        if(trackingTarget)
+        {
+            slimeAnim.SetBool("TrackingEnemy", true);
+        }
+        else
+        {
+            slimeAnim.SetBool("TrackingEnemy", false);
+        }
         //If no target to chase, and moveDelayTimer is less than 0, move
         if(moveDelayTimer <= 0)
         {
@@ -68,7 +80,7 @@ public class SlimeController : MonoBehaviour
         }
         else
         {
-            //Check direction the slime should be facgin
+            //Check direction the slime should be facing
             if (transform.position.x < startPosition.x - roamDistance)
             {
                 facingRight = true;
@@ -96,24 +108,32 @@ public class SlimeController : MonoBehaviour
     {
         //Check for nearby colliders on the player layer
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, trackRadius, playerLayer);
-
+        Debug.Log(targets.Length);
         //Check each of the colliders for the player tag
-        foreach(Collider2D col in targets)
+        if(targets.Length != 0)
         {
-            if(col.CompareTag("Player"))
+            foreach (Collider2D col in targets)
             {
-                //Set target to the found player
-                target = col.gameObject;
-                //Set tracking to true
-                trackingTarget = true;
-                break;
-            }
-            //If no targets in range, turn off tracking
-            else
-            {
-                trackingTarget = false;
+                if (col.CompareTag("Player"))
+                {
+                    //Set target to the found player
+                    target = col.gameObject;
+                    //Set tracking to true
+                    trackingTarget = true;
+                    break;
+                }
+                //If no targets in range, turn off tracking
+                else
+                {
+                    trackingTarget = false;
+                }
             }
         }
+        else
+        {
+            trackingTarget = false;
+        }
+
 
     }
 
