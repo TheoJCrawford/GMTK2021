@@ -20,6 +20,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Project",
+                    "type": "Button",
+                    "id": "237a4192-a836-4ba1-ab36-064feb33be2a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "5cf834dd-fd97-4287-8a09-6583669dce5d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -66,6 +82,28 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "11096cc6-6fde-4f9e-ad0a-3fcba51fd1f3",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New CS",
+                    "action": "Project",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a9187eb-d044-4f6b-94fb-f761e4db2e0c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New CS",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -74,10 +112,10 @@
             "id": "4ee6bafa-e762-4b1e-b0a3-98c9480900f5",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "Horizontal Movement",
                     "type": "Value",
                     "id": "0bef2573-2b96-4c45-81b9-c25802caac09",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Integer",
                     "processors": "NormalizeVector2",
                     "interactions": ""
                 },
@@ -85,6 +123,30 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "945f98db-1c7c-437c-8c00-1baeaee57571",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "947ed516-d65c-42da-9638-62059e993807",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Return",
+                    "type": "Button",
+                    "id": "b1f0a0b4-dab0-47e4-8929-e12aae065e5c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "e535f27c-ff67-4dc4-98a6-d132da10e0ea",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -98,7 +160,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Horizontal Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -109,7 +171,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Horizontal Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -120,7 +182,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Horizontal Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -131,7 +193,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Horizontal Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -142,7 +204,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Horizontal Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -156,6 +218,39 @@
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9be0888-7c80-4a7d-8cde-fb001ea80b09",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New CS",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8af78419-8dcd-460e-a379-3c05f184fff1",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New CS",
+                    "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "810993a8-8752-44ee-9fe4-70fbcb259fcc",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New CS",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -167,6 +262,11 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }
