@@ -1,11 +1,11 @@
 using UnityEngine;
 
 
-[RequireComponent(typeof(PlayerMotor))]
+[RequireComponent(typeof(PlayerMotor), typeof(Animator))]
 public class PlayerControls : MonoBehaviour
 {
     public GameObject otherHalf;
-    public bool isMainChar;
+    public bool isMainChar => _inControl;
 
     private PlayerMotor _motor;
     private bool _inControl;
@@ -23,6 +23,7 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TakeSplitSwapAction();
         if (_inControl == false)
         {
             _motor.SetMovement();
@@ -32,7 +33,6 @@ public class PlayerControls : MonoBehaviour
             TakeMoveInput();
             TakeJumpAction();
         }
-        TakeSplitSwapAction();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -66,16 +66,12 @@ public class PlayerControls : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && _inControl)
         {
-            _inControl = ControlShifting();
+            
             if (otherHalf == null)
             {
-                _inControl = ControlShifting();
                 if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= pullDist)
                 {
-                    Debug.Log(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position).ToString());
-                    _motor.SetState();
                     GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>().SetState();
-
 
                 }
                 else
@@ -88,17 +84,18 @@ public class PlayerControls : MonoBehaviour
                 _motor.SetState();
                 GameObject.Instantiate<GameObject>(otherHalf);
             }
+            Dues.ChangeController();
         }
     }
-    private bool ControlShifting()
+    public void ControlShifting()
     {
         if (_inControl)
         {
-            return false;
+            _inControl = false;
         }
         else
         {
-            return true;
+            _inControl = true;
         }
     }
     private void ResetJumping()

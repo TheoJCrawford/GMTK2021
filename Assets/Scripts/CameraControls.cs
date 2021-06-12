@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraControls : MonoBehaviour
 {
     private const float Z_OFFSET = -10f;
-    private const float Y_OFFSET = 1.5f;
+    private const float Y_OFFSET = .8f;
 
     [SerializeField] Transform target;
     [SerializeField] float _timeDilation;
@@ -17,7 +17,7 @@ public class CameraControls : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void LateUpdate()
+    private void Update()
     {
         
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -36,13 +36,13 @@ public class CameraControls : MonoBehaviour
     }
     public void ChangeTarget()
     {
-        if(target.tag == "Player")
+        if(target.tag == "Spirit" || target == null)
         {
-            target = GameObject.FindGameObjectWithTag("Spirit").transform;
+            target = GameObject.FindGameObjectWithTag("Player").transform;
         }
         else
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+            target = GameObject.FindGameObjectWithTag("Spirit").transform;
         }
     }
 }
