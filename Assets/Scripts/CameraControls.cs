@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraControls : MonoBehaviour
 {
     private const float Z_OFFSET = -10f;
+    private const float Y_OFFSET = 1.5f;
 
     [SerializeField] Transform target;
     [SerializeField] float _timeDilation;
@@ -27,7 +28,7 @@ public class CameraControls : MonoBehaviour
         {
             target = GameObject.FindGameObjectWithTag("Player").transform;
         }
-        transform.position = Vector3.Lerp(transform.position, new Vector3( target.position.x, target.position.y, target.position.z + Z_OFFSET), _timeDilation * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, new Vector3( target.position.x, target.position.y + Y_OFFSET, target.position.z + Z_OFFSET), _timeDilation * Time.deltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

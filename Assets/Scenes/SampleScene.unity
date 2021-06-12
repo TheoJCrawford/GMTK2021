@@ -287,7 +287,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Testie Char
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4581797636588717697, guid: ff7c010b7599bec489d1db337b974400, type: 3}
+      propertyPath: m_Size.x
+      value: 0.32432878
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581797636588717697, guid: ff7c010b7599bec489d1db337b974400, type: 3}
+      propertyPath: m_Size.y
+      value: 0.87419844
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581797636588717697, guid: ff7c010b7599bec489d1db337b974400, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.022147417
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581797636588717697, guid: ff7c010b7599bec489d1db337b974400, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.044294834
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1557657142432752147, guid: ff7c010b7599bec489d1db337b974400, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ff7c010b7599bec489d1db337b974400, type: 3}
 --- !u!1 &519420028
 GameObject:
