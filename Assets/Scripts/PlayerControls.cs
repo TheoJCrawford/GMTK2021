@@ -70,19 +70,17 @@ public class PlayerControls : MonoBehaviour
             if (otherHalf == null)
             {
                 _inControl = ControlShifting();
-                /*
-                if (!GameObject.FindGameObjectWithTag("Player")) {
-                    Debug.LogError("We have no player");
-                    Debug.Break();
-                }
-                */
                 if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= pullDist)
                 {
+                    Debug.Log(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position).ToString());
                     _motor.SetState();
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>().SetState();
+
+
                 }
                 else
                 {
-                    GameObject.Destroy(this);
+                    GameObject.Destroy(gameObject);
                 }
             }
             else

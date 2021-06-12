@@ -41,7 +41,7 @@ public class PlayerMotor:MonoBehaviour
         }
         else
         {
-            _rb.bodyType = RigidbodyType2D.Kinematic;
+            _rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
 }

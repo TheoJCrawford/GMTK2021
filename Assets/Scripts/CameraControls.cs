@@ -18,13 +18,21 @@ public class CameraControls : MonoBehaviour
     // Update is called once per frame
     private void LateUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3( target.position.x, target.position.y, target.position.z + Z_OFFSET), _timeDilation * Time.deltaTime);
+        
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             ChangeTarget();
         }
+        if (target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        transform.position = Vector3.Lerp(transform.position, new Vector3( target.position.x, target.position.y, target.position.z + Z_OFFSET), _timeDilation * Time.deltaTime);
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.5f);
+    }
     public void ChangeTarget()
     {
         if(target.tag == "Player")
