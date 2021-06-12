@@ -20,14 +20,13 @@ public class TestPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inputX = Input.GetAxisRaw("Vertical");
-        Debug.Log(inputX);
-        //moveVector = new Vector2(inputX, 0f);
-        //Move();
+        inputX = Input.GetAxisRaw("Horizontal");
+        moveVector = new Vector2(inputX, 0f);
+        Move();
     }
 
     private void Move()
     {
-        playerRb.AddForce(moveVector * moveSpeed * Time.fixedDeltaTime);
+        playerRb.AddForce(moveVector * moveSpeed);
     }
 }
