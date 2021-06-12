@@ -74,6 +74,10 @@ public class PlayerControls : MonoBehaviour
                 {
                     
                 }
+                else
+                {
+                    GameObject.Destroy(GameObject.FindGameObjectWithTag("Spirit"));
+                }
             }
             if(isMainChar && GameObject.FindGameObjectWithTag("Spirit") == null)
             {
