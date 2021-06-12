@@ -70,10 +70,12 @@ public class PlayerControls : MonoBehaviour
             if (otherHalf == null)
             {
                 _inControl = ControlShifting();
-                if (GameObject.FindGameObjectWithTag("Player")) {
+                /*
+                if (!GameObject.FindGameObjectWithTag("Player")) {
                     Debug.LogError("We have no player");
                     Debug.Break();
                 }
+                */
                 if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= pullDist)
                 {
                     _motor.SetState();
