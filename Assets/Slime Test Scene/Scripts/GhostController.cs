@@ -11,8 +11,6 @@ public class GhostController : MonoBehaviour
     [SerializeField]
     private float health;
     [SerializeField]
-    private float bumpDamage;
-    [SerializeField]
     //Movement Variables
     private float moveSpeed;
     [SerializeField]
@@ -122,13 +120,6 @@ public class GhostController : MonoBehaviour
         }
     }
 
-    //Draw the search radius
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, trackRadius);
-    }
-
     //Check which way the ghost should be facing
     private void CheckTurn()
     {
@@ -149,5 +140,30 @@ public class GhostController : MonoBehaviour
         {
             movingUp = true;
         }
+    }
+
+    //Method to damage the ghost
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+
+        //If health is less than 0, kill the ghost
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    //Destroy the ghost gameObject
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    //Draw the search radius
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, trackRadius);
     }
 }
