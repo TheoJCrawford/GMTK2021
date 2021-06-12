@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -4563549870895968030}
   m_Layer: 0
   m_Name: Spirit
-  m_TagString: Untagged
+  m_TagString: Spirit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fbcb007c967124a90f7d7c5db3201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 0
-  _jumpSpeed: 0
+  _moveSpeed: 5
+  _jumpSpeed: 2
 --- !u!114 &4458786896470730803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   otherHalf: {fileID: 0}
   isMainChar: 0
   pullDist: 4
-  jumpLimit: 1
+  jumpLimit: 2
 --- !u!114 &-4563549870895968030
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -239,10 +239,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1557657142432752146, guid: ff7c010b7599bec489d1db337b974400, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1557657142432752149, guid: ff7c010b7599bec489d1db337b974400, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -291,10 +287,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Testie Char
       objectReference: {fileID: 0}
-    - target: {fileID: 1557657142432752159, guid: ff7c010b7599bec489d1db337b974400, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7c010b7599bec489d1db337b974400, type: 3}
 --- !u!1 &519420028
@@ -308,6 +300,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -323,6 +316,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794ee1f88b8fd3b4bb24e9d367448f6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  _timeDilation: 2
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
