@@ -22,7 +22,7 @@ public class CameraControls : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            //ChangeTarget();
+            ChangeTarget();
         }
         if (target == null)
         {
@@ -30,10 +30,10 @@ public class CameraControls : MonoBehaviour
         }
         transform.position = Vector3.Lerp(transform.position, new Vector3( target.position.x, target.position.y + Y_OFFSET, target.position.z + Z_OFFSET), _timeDilation * Time.deltaTime);
     }
-    /*
+    
     public void ChangeTarget()
     {
-        if(target.tag == "Spirit" || target == null)
+        if(target == null || target.tag == "Spirit" )
         {
             target = GameObject.FindGameObjectWithTag("Player").transform;
         }
@@ -42,5 +42,4 @@ public class CameraControls : MonoBehaviour
             target = GameObject.FindGameObjectWithTag("Spirit").transform;
         }
     }
-    */
 }
