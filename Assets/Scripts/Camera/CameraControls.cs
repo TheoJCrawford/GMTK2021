@@ -17,12 +17,12 @@ public class CameraControls : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void LateUpdate()
     {
         
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            ChangeTarget();
+            //ChangeTarget();
         }
         if (target == null)
         {
@@ -30,10 +30,7 @@ public class CameraControls : MonoBehaviour
         }
         transform.position = Vector3.Lerp(transform.position, new Vector3( target.position.x, target.position.y + Y_OFFSET, target.position.z + Z_OFFSET), _timeDilation * Time.deltaTime);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.5f);
-    }
+    /*
     public void ChangeTarget()
     {
         if(target.tag == "Spirit" || target == null)
@@ -45,4 +42,5 @@ public class CameraControls : MonoBehaviour
             target = GameObject.FindGameObjectWithTag("Spirit").transform;
         }
     }
+    */
 }

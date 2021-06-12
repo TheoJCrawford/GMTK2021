@@ -68,17 +68,16 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && _inControl)
         {
             
-            if (otherHalf == null)
+            if (!isMainChar)
             {
                 if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= pullDist)
                 {
-                    GameObject.Instantiate<GameObject>(otherHalf, transform.position, otherHalf.transform.rotation);
-
+                    
                 }
             }
-            else
+            if(isMainChar && GameObject.FindGameObjectWithTag("Spirit") == null)
             {
-                GameObject.Instantiate<GameObject>(otherHalf);
+                GameObject.Instantiate<GameObject>(otherHalf, transform.position, otherHalf.transform.rotation);
             }
             GameObject.Find("Deus").GetComponent<Dues>().ChangeController();
         }

@@ -8,7 +8,7 @@ public class PlayerControlsEditor : Editor
     {
         PlayerControls playerControls = (PlayerControls)target;
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Am I the mc?", GUILayout.ExpandWidth());
+        GUILayout.Label("Am I the mc?", GUILayout.ExpandWidth(false));
         playerControls.isMainChar = GUILayout.Toggle(playerControls.isMainChar, "Am I?");
         GUILayout.EndHorizontal();
         GUILayout.Label("Can Act: " + playerControls.inControl);
