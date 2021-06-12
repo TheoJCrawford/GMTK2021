@@ -13,12 +13,10 @@ public class PlayerMotorEditor : Editor
         GUILayout.BeginHorizontal();
         GUILayout.Label("move speed: ", GUILayout.ExpandWidth(false));
         motor._moveSpeed = EditorGUILayout.FloatField(motor._moveSpeed);
-        motor._moveSpeed = GUILayout.HorizontalSlider(motor._moveSpeed, 0f, 36f);
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
         GUILayout.Label("Jump speed: ", GUILayout.ExpandWidth(false));
         motor._jumpSpeed = EditorGUILayout.FloatField(motor._jumpSpeed);
-        motor._jumpSpeed = GUILayout.HorizontalSlider(motor._jumpSpeed, 0f, 20f);
         GUILayout.EndHorizontal();
     }
 
