@@ -9,14 +9,15 @@ public class PlayerControls : MonoBehaviour
     public bool inControl => _inControl;
 
     private PlayerMotor _motor;
+    private Animator _anima;
     private bool _inControl;
     public float pullDist = 4f;
     public int jumpLimit = 1;
-
     private int _remainingJump;
     void Start()
     {
         _motor = GetComponent<PlayerMotor>();
+        _anima = GetComponent<Animator>();
         ResetJumping();
         _inControl = true;
     }
@@ -86,6 +87,19 @@ public class PlayerControls : MonoBehaviour
             GameObject.Find("Deus").GetComponent<Dues>().ChangeController();
         }
     }
+    
+    private void Attack()
+    {
+        if(Input.GetMouseButtonDown(0) && !GameObject.FindGameObjectWithTag("Spirit"))
+        {
+            //Do attack (Oddly not specified what kind of attack, so I'm going to let this sit here)
+        }
+    }
+    private void ResetJumping()
+    {
+        _remainingJump = jumpLimit;
+    }
+
     public void ControlShifting()
     {
         if (_inControl)
@@ -97,9 +111,4 @@ public class PlayerControls : MonoBehaviour
             _inControl = true;
         }
     }
-    private void ResetJumping()
-    {
-        _remainingJump = jumpLimit;
-    }
-
 }
