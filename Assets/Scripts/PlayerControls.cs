@@ -4,9 +4,12 @@ using UnityEngine;
 [RequireComponent( typeof(PlayerMotor))]
 public class PlayerControls : MonoBehaviour
 {
+    public GameObject otherHalf;
+    public bool isMainChar;
+
     private PlayerMotor _motor;
-
-
+    private bool _inControl;
+    public float pullDist = 4f;
     public int jumpLimit = 1;
 
     private int _remainingJump;
@@ -14,13 +17,18 @@ public class PlayerControls : MonoBehaviour
     {
         _motor = GetComponent<PlayerMotor>();
         ResetJumping();
+        _inControl = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        TakeMoveInput();
-        TakeJumpAction();
+        if(_inControl== false)
+        {
+            TakeMoveInput();
+            TakeJumpAction();
+            TakeSplitSwapAction();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -50,9 +58,16 @@ public class PlayerControls : MonoBehaviour
             _remainingJump--;
         }
     }
-
+    private void TakeSplitSwapAction()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _inControl)
+        {
+            _inControl = false;
+        }
+    }
     private void ResetJumping()
     {
         _remainingJump = jumpLimit;
     }
+    
 }
