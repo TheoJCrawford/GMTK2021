@@ -55,7 +55,6 @@ public class SlimeController : MonoBehaviour
     //Slime movement script
     private void Move()
     {
-        Debug.Log(trackingTarget);
         if(trackingTarget)
         {
             if(target.transform.position.x > transform.position.x)
@@ -115,6 +114,7 @@ public class SlimeController : MonoBehaviour
                 trackingTarget = false;
             }
         }
+
     }
 
     //Method to damage the slime
@@ -133,5 +133,11 @@ public class SlimeController : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, trackRadius);
     }
 }
