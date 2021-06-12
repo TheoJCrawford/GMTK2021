@@ -6,7 +6,7 @@ public class PlayerMotor:MonoBehaviour
     public float _jumpSpeed;
 
     private Rigidbody2D _rb;
-    private Vector2 _moveVec;
+    private float _moveVec;
 
 
     private void Awake()
@@ -14,10 +14,21 @@ public class PlayerMotor:MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    
-
+    private void FixedUpdate()
+    {
+        EnactMovement();
+    }
+    private void EnactMovement()
+    {
+        _rb.AddForce(new Vector2( _moveVec, 0), ForceMode2D.Force);
+    }
     public void GetNormalMovement(int move = 0)
     {
-        _moveVec = new Vector2(move, 0);
+        _moveVec = move * _moveSpeed;
+        
+    }
+    public void EnguageJump()
+    {
+        _rb.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
     }
 }
