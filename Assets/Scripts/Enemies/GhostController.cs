@@ -29,6 +29,7 @@ public class GhostController : MonoBehaviour
 
     //Target related variables
     Collider2D target;
+    Collider2D targetSpirit;
     [SerializeField]
     private float trackRadius;
     private bool targetFound;
@@ -36,6 +37,7 @@ public class GhostController : MonoBehaviour
 
     //Player layer to check for targets on
     public LayerMask playerMask;
+    public LayerMask spiritMask;
 
     // Start is called before the first frame update
     void Start()
@@ -76,9 +78,10 @@ public class GhostController : MonoBehaviour
     {
         //Check for nearby targets within a radius of the ghost
         target = Physics2D.OverlapCircle(transform.position, trackRadius, playerMask);
+        targetSpirit = Physics2D.OverlapCircle(transform.position, trackRadius, spiritMask);
 
         //Set target boolean
-        if (target != null)
+        if (target != null || targetSpirit)
         {
             targetFound = true;
         }
