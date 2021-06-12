@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMotor:MonoBehaviour
 {
@@ -30,5 +31,17 @@ public class PlayerMotor:MonoBehaviour
     public void EngageJump()
     {
         _rb.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
+    }
+
+    internal void SetState()
+    {
+        if(_rb.bodyType == RigidbodyType2D.Dynamic)
+        {
+            _rb.bodyType = RigidbodyType2D.Static;
+        }
+        else
+        {
+            _rb.bodyType = RigidbodyType2D.Kinematic;
+        }
     }
 }

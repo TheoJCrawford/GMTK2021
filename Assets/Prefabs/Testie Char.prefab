@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 1557657142432752146}
   - component: {fileID: 1557657142432752145}
   - component: {fileID: 1557657142432752144}
+  - component: {fileID: -1214211187913983752}
   m_Layer: 0
   m_Name: Testie Char
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,7 +133,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1557657142432752145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fbcb007c967124a90f7d7c5db3201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 0
-  _jumpSpeed: 0
+  _moveSpeed: 5
+  _jumpSpeed: 5
 --- !u!114 &1557657142432752144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,4 +160,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c773b469a231cd4986cc77450fdec13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherHalf: {fileID: 4458786896470730812, guid: a149e06e2c19e4c498e26e520de9349d, type: 3}
+  isMainChar: 0
+  pullDist: 4
   jumpLimit: 1
+--- !u!114 &-1214211187913983752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557657142432752159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0c678fcc0da49449b089b8cbfaa935, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
