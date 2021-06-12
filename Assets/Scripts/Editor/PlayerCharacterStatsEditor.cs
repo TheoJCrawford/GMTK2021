@@ -9,6 +9,10 @@ public class PlayerCharacterStatsEditor:Editor
         CharacterStats stats = (CharacterStats)target;
         GUILayout.Label("Health: " + stats.curHealth.ToString() + "/ " + stats.maxHealth.ToString());
         stats.SetMaxHealth(EditorGUILayout.IntField(stats.maxHealth));
+        if(GUILayout.Button("Reset Health"))
+        {
+            stats.ResetHealth();
+        }
     }
 }
 
