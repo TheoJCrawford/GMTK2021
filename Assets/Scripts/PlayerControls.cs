@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput), typeof(PlayerMotor))]
 public class PlayerControls : MonoBehaviour
 {
-    
     private PlayerInput _input;
     private PlayerMotor _motor;
     // Start is called before the first frame update
