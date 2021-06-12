@@ -370,5 +370,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8440308470242064565, guid: 36649d771b02574459de9b7ddddfe8aa, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Physical State
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440308470242064565, guid: 36649d771b02574459de9b7ddddfe8aa, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8440308470242064565, guid: 36649d771b02574459de9b7ddddfe8aa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 36649d771b02574459de9b7ddddfe8aa, type: 3}

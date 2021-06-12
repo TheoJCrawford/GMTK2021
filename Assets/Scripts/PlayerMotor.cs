@@ -22,12 +22,12 @@ public class PlayerMotor:MonoBehaviour
     {
         _rb.AddForce(new Vector2( _moveVec, 0), ForceMode2D.Force);
     }
-    public void GetNormalMovement(int move = 0)
+    public void SetMovement(float move = 0)
     {
         _moveVec = move * _moveSpeed;
         
     }
-    public void EnguageJump()
+    public void EngageJump()
     {
         _rb.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
     }

@@ -1,17 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput), typeof(PlayerMotor))]
+
+[RequireComponent( typeof(PlayerMotor))]
 public class PlayerControls : MonoBehaviour
 {
-    private PlayerInput _input;
     private PlayerMotor _motor;
 
-    private InputAction _moveAction;
-    private InputAction _JumpAction;
 
     public int jumpLimit = 1;
 
@@ -19,28 +13,26 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         _motor = GetComponent<PlayerMotor>();
-        _input = GetComponent<PlayerInput>();
-        _moveAction = _input.actions.FindAction("Horizontal Movement");
-        _JumpAction = _input.actions.FindAction("Jump");
-        ResetJumping();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        _moveAction.performed += TakeMoveInput;
-        _moveAction.canceled += TakeMoveInput;
-        _JumpAction.performed += TakeJumpAction;
-        _JumpAction.canceled += TakeJumpAction;
+        
     }
-    private void TakeMoveInput(InputAction.CallbackContext callbackContext)
+    private void TakeMoveInput()
     {
-        if (callbackContext.ReadValue<float>() == 0)
+        if (Input.GetAxis("Horizontal") ==0)
         {
-            
+            _motor.SetMovement();
+        }
+        else
+        {
+            _motor.SetMovement(Input.GetAxis("Horizontal"));
         }
     }
-    private void TakeJumpAction(InputAction.CallbackContext obj)
+    private void TakeJumpAction()
     {
         
     }
