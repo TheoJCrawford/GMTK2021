@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-[RequireComponent( typeof(PlayerMotor))]
+[RequireComponent(typeof(PlayerMotor))]
 public class PlayerControls : MonoBehaviour
 {
     public GameObject otherHalf;
@@ -23,25 +23,29 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_inControl== false)
+        if (_inControl == false)
+        {
+            _motor.SetMovement();
+        }
+        else
         {
             TakeMoveInput();
             TakeJumpAction();
-            TakeSplitSwapAction();
         }
+        TakeSplitSwapAction();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(Physics2D.Raycast(transform.position, Vector2.down))
+        if (Physics2D.Raycast(transform.position, Vector2.down))
         {
             ResetJumping();
         }
-        
+
     }
     private void TakeMoveInput()
     {
-        if (Input.GetAxis("Horizontal") ==0)
+        if (Input.GetAxis("Horizontal") == 0)
         {
             _motor.SetMovement();
         }
@@ -52,7 +56,7 @@ public class PlayerControls : MonoBehaviour
     }
     private void TakeJumpAction()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _remainingJump >0)
+        if (Input.GetKeyDown(KeyCode.Space) && _remainingJump > 0)
         {
             _motor.EngageJump();
             _remainingJump--;
@@ -62,12 +66,44 @@ public class PlayerControls : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && _inControl)
         {
-            _inControl = false;
+            _inControl = ControlShifting();
+            if (otherHalf == null)
+            {
+                _inControl = ControlShifting();
+                if (GameObject.FindGameObjectWithTag("Player")) {
+                    Debug.LogError("We have no player");
+                    Debug.Break();
+                }
+                if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= pullDist)
+                {
+                    _motor.SetState();
+                }
+                else
+                {
+                    GameObject.Destroy(this);
+                }
+            }
+            else
+            {
+                _motor.SetState();
+                GameObject.Instantiate<GameObject>(otherHalf);
+            }
+        }
+    }
+    private bool ControlShifting()
+    {
+        if (_inControl)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
     private void ResetJumping()
     {
         _remainingJump = jumpLimit;
     }
-    
+
 }

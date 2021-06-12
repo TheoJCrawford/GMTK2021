@@ -239,6 +239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1557657142432752146, guid: ff7c010b7599bec489d1db337b974400, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1557657142432752149, guid: ff7c010b7599bec489d1db337b974400, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -286,6 +290,10 @@ PrefabInstance:
     - target: {fileID: 1557657142432752159, guid: ff7c010b7599bec489d1db337b974400, type: 3}
       propertyPath: m_Name
       value: Testie Char
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557657142432752159, guid: ff7c010b7599bec489d1db337b974400, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7c010b7599bec489d1db337b974400, type: 3}
