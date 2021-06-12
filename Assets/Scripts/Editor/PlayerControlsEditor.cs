@@ -15,7 +15,14 @@ public class PlayerControlsEditor : Editor
         GUILayout.Label("Pull Distance: ", GUILayout.ExpandWidth(false));
         playerControls.pullDist = EditorGUILayout.FloatField(playerControls.pullDist);
         GUILayout.EndHorizontal();
-
+        GUILayout.Label("Tag partner (Only for main): " + playerControls.otherHalf);
+        if(GUILayout.Button("Set Ally")){
+            EditorGUIUtility.ShowObjectPicker<GameObject>(playerControls.otherHalf, true,"",0);
+        }
+        if(Event.current.commandName == "ObjectSelectorUpdated")
+        {
+            playerControls.otherHalf = (GameObject)EditorGUIUtility.GetObjectPickerObject();
+        }
     }
 }
 
