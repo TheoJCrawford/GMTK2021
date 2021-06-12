@@ -39,13 +39,11 @@ public class SlimeController : MonoBehaviour
     {
         if(moveDelayTimer <= 0)
         {
-            Debug.Log("Move");
             Move();
             moveDelayTimer = moveDelay;
         }
         else
         {
-            Debug.Log("Counting Down");
             moveDelayTimer -= Time.deltaTime;
         }
     }
