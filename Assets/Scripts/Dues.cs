@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Dues
+public class Dues:MonoBehaviour
 {
-    public static void ChangeController()
+    public void ChangeController()
     {
-     GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>().ControlShifting();
+        if(GameObject.FindGameObjectWithTag("Player") && GameObject.FindGameObjectWithTag("Spirit"))
+        {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>().ControlShifting();
+                GameObject.FindGameObjectWithTag("Spirit").GetComponent<PlayerControls>().ControlShifting();
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>().ControlShifting();
+        }
     }
-    public static float PlayerDistance(Vector3 pos1, Vector3 pos2) => Vector3.Distance(pos1, pos2);
-    
 }

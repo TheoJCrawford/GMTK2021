@@ -71,20 +71,15 @@ public class PlayerControls : MonoBehaviour
             {
                 if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= pullDist)
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMotor>().SetState();
+                    GameObject.Instantiate<GameObject>(otherHalf, transform.position, otherHalf.transform.rotation);
 
-                }
-                else
-                {
-                    GameObject.Destroy(gameObject);
                 }
             }
             else
             {
-                _motor.SetState();
                 GameObject.Instantiate<GameObject>(otherHalf);
             }
-            Dues.ChangeController();
+            GameObject.Find("Deus").GetComponent<Dues>().ChangeController();
         }
     }
     public void ControlShifting()
