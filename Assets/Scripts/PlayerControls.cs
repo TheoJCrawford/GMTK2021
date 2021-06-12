@@ -1,52 +1,73 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput), typeof(PlayerMotor))]
+
+[RequireComponent( typeof(PlayerMotor))]
 public class PlayerControls : MonoBehaviour
 {
-    private PlayerInput _input;
+    public GameObject otherHalf;
+    public bool isMainChar;
+
     private PlayerMotor _motor;
-
-    private InputAction _moveAction;
-    private InputAction _JumpAction;
-
+    private bool _inControl;
+    public float pullDist = 4f;
     public int jumpLimit = 1;
 
     private int _remainingJump;
     void Start()
     {
         _motor = GetComponent<PlayerMotor>();
-        _input = GetComponent<PlayerInput>();
-        _moveAction = _input.actions.FindAction("Horizontal Movement");
-        _JumpAction = _input.actions.FindAction("Jump");
         ResetJumping();
+        _inControl = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _moveAction.performed += TakeMoveInput;
-        _moveAction.canceled += TakeMoveInput;
-        _JumpAction.performed += TakeJumpAction;
-        _JumpAction.canceled += TakeJumpAction;
-    }
-    private void TakeMoveInput(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.ReadValue<float>() == 0)
+        if(_inControl== false)
         {
-            
+            TakeMoveInput();
+            TakeJumpAction();
+            TakeSplitSwapAction();
         }
     }
-    private void TakeJumpAction(InputAction.CallbackContext obj)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(Physics2D.Raycast(transform.position, Vector2.down))
+        {
+            ResetJumping();
+        }
         
     }
-
+    private void TakeMoveInput()
+    {
+        if (Input.GetAxis("Horizontal") ==0)
+        {
+            _motor.SetMovement();
+        }
+        else
+        {
+            _motor.SetMovement(Input.GetAxis("Horizontal"));
+        }
+    }
+    private void TakeJumpAction()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && _remainingJump >0)
+        {
+            _motor.EngageJump();
+            _remainingJump--;
+        }
+    }
+    private void TakeSplitSwapAction()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _inControl)
+        {
+            _inControl = false;
+        }
+    }
     private void ResetJumping()
     {
         _remainingJump = jumpLimit;
     }
+    
 }
