@@ -13,12 +13,22 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         _motor = GetComponent<PlayerMotor>();
-
+        ResetJumping();
     }
 
     // Update is called once per frame
     void Update()
     {
+        TakeMoveInput();
+        TakeJumpAction();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(Physics2D.Raycast(transform.position, Vector2.down))
+        {
+            ResetJumping();
+        }
         
     }
     private void TakeMoveInput()
@@ -34,7 +44,11 @@ public class PlayerControls : MonoBehaviour
     }
     private void TakeJumpAction()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space) && _remainingJump >0)
+        {
+            _motor.EngageJump();
+            _remainingJump--;
+        }
     }
 
     private void ResetJumping()
