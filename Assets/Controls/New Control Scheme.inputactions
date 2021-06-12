@@ -150,6 +150,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Spirit Slash",
+                    "type": "Button",
+                    "id": "219feeae-8d5a-4da8-a75f-c38e5d762b79",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -249,6 +257,17 @@
                     "processors": "",
                     "groups": "New CS",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7786927f-ede3-4ea0-b3c4-da72291dee9c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New CS",
+                    "action": "Spirit Slash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
