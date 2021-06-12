@@ -2,7 +2,7 @@
     "name": "New Control Scheme",
     "maps": [
         {
-            "name": "Play",
+            "name": "Physical State",
             "id": "fe57ea48-a48a-4e3e-a670-34e737eba4cc",
             "actions": [
                 {
@@ -64,6 +64,96 @@
                     "processors": "",
                     "groups": "New CS",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Spirit State",
+            "id": "4ee6bafa-e762-4b1e-b0a3-98c9480900f5",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Value",
+                    "id": "0bef2573-2b96-4c45-81b9-c25802caac09",
+                    "expectedControlType": "Vector2",
+                    "processors": "NormalizeVector2",
+                    "interactions": ""
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "945f98db-1c7c-437c-8c00-1baeaee57571",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "98eda067-ed54-4769-9282-32f01d4e76a7",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "5da72429-b44c-4d80-89d4-ac01cb5de025",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "71b97cf8-467c-4c2a-a6da-e2a87cd16fb1",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "de75364c-b732-49c8-b307-46286b70250f",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "2c3e9d90-e877-4e16-88de-9c7f059a8e5a",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f8042c99-e864-4598-bc17-b84c2ea5a869",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New CS",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
