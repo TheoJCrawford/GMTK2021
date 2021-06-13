@@ -7,6 +7,11 @@ public class MainMenuGod : MonoBehaviour
     {
         SceneManager.LoadScene("Level1");
     }
+    public void ReturnMain()
+    {
+        SceneManager.LoadScene("");
+    }
+
     public void ExitGame()
     {
         Application.Quit();
