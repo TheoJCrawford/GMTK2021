@@ -85,7 +85,7 @@ public class GhostController : Enemy
         targetSpirit = Physics2D.OverlapCircle(transform.position, trackRadius, spiritMask);
 
         //Set target boolean
-        if (target != null || targetSpirit)
+        if (target != null || targetSpirit != null)
         {
             targetFound = true;
         }

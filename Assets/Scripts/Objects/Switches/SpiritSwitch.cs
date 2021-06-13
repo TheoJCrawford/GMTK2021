@@ -10,6 +10,10 @@ public class SpiritSwitch : MonoBehaviour
     private enum DoorType { physical, spirit}
     [SerializeField]
     DoorType doorType;
+    private enum ButtonType { physical, spirit}
+    [SerializeField]
+    ButtonType buttonType;
+    
 
     private void Start()
     {
