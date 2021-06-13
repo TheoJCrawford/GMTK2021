@@ -62,16 +62,33 @@ public class PlayerControls : MonoBehaviour
             TakeJumpAction();
         }
 
-        if (Input.GetMouseButtonDown(0) && !GameObject.FindGameObjectWithTag("Spirit"))
+        if (isMainChar && inControl && !GameObject.FindGameObjectWithTag("Spirit"))
         {
-            Debug.Log("Attacking");
-            RegularAttackBool();
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Attacking");
+                RegularAttackBool();
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                SpiritSlash();
+            }
         }
-        else if (Input.GetMouseButtonDown(1) && !GameObject.FindGameObjectWithTag("Spirit"))
+        else if(!isMainChar && inControl)
         {
-            SpiritSlash();
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Attacking");
+                RegularAttackBool();
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                SpiritSlash();
+            }
         }
-    }
+
+
+        }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -118,8 +135,9 @@ public class PlayerControls : MonoBehaviour
             {
                 //If further than the pull distance
                 if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) <= pullDist)
-                { 
+                {
                     //Change controls back to the player, destroy the spirit object
+                    _anima.SetFloat("Speed", 0f);
                     God.ChangeController();
                     GameObject.Destroy(GameObject.FindGameObjectWithTag("Spirit"));
                 }
@@ -130,6 +148,7 @@ public class PlayerControls : MonoBehaviour
                 //If no instantiated spirit
                 if (GameObject.FindGameObjectWithTag("Spirit") == null)
                 {
+                    _anima.SetFloat("Speed", 0f);
                     GameObject.Instantiate<GameObject>(otherHalf, transform.position, otherHalf.transform.rotation);
                     God.ChangeController();
                 }
@@ -150,7 +169,7 @@ public class PlayerControls : MonoBehaviour
         
     }
 
-    public void ResetAttackBool()
+    private void ResetAttackBool()
     {
         _anima.SetBool("Attack", false);
     }
