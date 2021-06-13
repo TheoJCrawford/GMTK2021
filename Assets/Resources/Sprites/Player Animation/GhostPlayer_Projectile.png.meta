@@ -1,43 +1,25 @@
 fileFormatVersion: 2
-guid: 1dee0beba9264614f8b703ac357227dd
+guid: 30c47ad55d35f9b408680392d4c14fca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4759001618303921117
-    second: Heh... Arrow_0
+      213: 2790313280370669706
+    second: GhostPlayer_Projectile_0
   - first:
-      213: 6873105387607618167
-    second: Heh... Arrow_1
+      213: -8167990294529354720
+    second: GhostPlayer_Projectile_1
   - first:
-      213: -8941853521473818729
-    second: Heh... Arrow_2
+      213: 5484089946042103453
+    second: GhostPlayer_Projectile_2
   - first:
-      213: 445297029940199669
-    second: Heh... Arrow_3
+      213: -1471446238687659314
+    second: GhostPlayer_Projectile_3
   - first:
-      213: -1690815307749325944
-    second: Heh... Arrow_4
+      213: 4608580956500330595
+    second: GhostPlayer_Projectile_4
   - first:
-      213: -5014815325609977309
-    second: Heh... Arrow_5
-  - first:
-      213: 4351142694731061813
-    second: Heh... Arrow_6
-  - first:
-      213: -3599009574824446835
-    second: Heh... Arrow_7
-  - first:
-      213: 1585770445944769356
-    second: Heh... Arrow_8
-  - first:
-      213: -5156665749165792385
-    second: Heh... Arrow_9
-  - first:
-      213: -8562676900837024251
-    second: Heh... Arrow_10
-  - first:
-      213: 5048705883751867641
-    second: Heh... Arrow_11
+      213: 5375630789458799387
+    second: GhostPlayer_Projectile_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,12 +145,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Heh... Arrow_0
+      name: GhostPlayer_Projectile_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
+        width: 140
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -177,19 +159,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3245c7f0e31a4fdb0800000000000000
-      internalID: -4759001618303921117
+      spriteID: a887c80152f29b620800000000000000
+      internalID: 2790313280370669706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Heh... Arrow_1
+      name: GhostPlayer_Projectile_1
       rect:
         serializedVersion: 2
-        x: 256
+        x: 140
         y: 0
-        width: 256
+        width: 140
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -198,19 +180,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 772fc2c4fec226f50800000000000000
-      internalID: 6873105387607618167
+      spriteID: 0245dbd5a1875ae80800000000000000
+      internalID: -8167990294529354720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Heh... Arrow_2
+      name: GhostPlayer_Projectile_2
       rect:
         serializedVersion: 2
-        x: 512
+        x: 280
         y: 0
-        width: 256
+        width: 140
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -219,19 +201,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79f2af2299728e380800000000000000
-      internalID: -8941853521473818729
+      spriteID: d96712effb66b1c40800000000000000
+      internalID: 5484089946042103453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Heh... Arrow_3
+      name: GhostPlayer_Projectile_3
       rect:
         serializedVersion: 2
-        x: 768
+        x: 420
         y: 0
-        width: 256
+        width: 140
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -240,19 +222,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f04f191a430e2600800000000000000
-      internalID: 445297029940199669
+      spriteID: ecaffe4217f549be0800000000000000
+      internalID: -1471446238687659314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Heh... Arrow_4
+      name: GhostPlayer_Projectile_4
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 560
         y: 0
-        width: 256
+        width: 140
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -261,19 +243,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8830fc89f640988e0800000000000000
-      internalID: -1690815307749325944
+      spriteID: 36805de66f7f4ff30800000000000000
+      internalID: 4608580956500330595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Heh... Arrow_5
+      name: GhostPlayer_Projectile_5
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 700
         y: 0
-        width: 256
+        width: 140
         height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -282,134 +264,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32a15dee70cc76ab0800000000000000
-      internalID: -5014815325609977309
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Heh... Arrow_6
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 53a1b7e3a3d526c30800000000000000
-      internalID: 4351142694731061813
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Heh... Arrow_7
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d84fb5d2cdfbd0ec0800000000000000
-      internalID: -3599009574824446835
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Heh... Arrow_8
-      rect:
-        serializedVersion: 2
-        x: 2048
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4bc9dd91d9c10610800000000000000
-      internalID: 1585770445944769356
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Heh... Arrow_9
-      rect:
-        serializedVersion: 2
-        x: 2304
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f73ac8382d7df68b0800000000000000
-      internalID: -5156665749165792385
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Heh... Arrow_10
-      rect:
-        serializedVersion: 2
-        x: 2560
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 50e9a27c9b24b2980800000000000000
-      internalID: -8562676900837024251
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Heh... Arrow_11
-      rect:
-        serializedVersion: 2
-        x: 2816
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9f46478804b901640800000000000000
-      internalID: 5048705883751867641
+      spriteID: b1b2851c8b31a9a40800000000000000
+      internalID: 5375630789458799387
       vertices: []
       indices: 
       edges: []
