@@ -24,11 +24,11 @@ public class SpiritSlash : MonoBehaviour
         _rb.AddForce(transform.right * speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if(collider.gameObject.CompareTag("Enemy"))
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            Enemy enemy = collider.gameObject.GetComponent<Enemy>();
             enemy.TakeDamage(damage);
         }
     }
