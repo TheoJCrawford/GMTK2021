@@ -23,7 +23,12 @@ public class PlayerControls : MonoBehaviour
     private int _remainingJump;
     private float moveVectorX;
 
-
+    private Collider2D[] attackHitbox;
+    [SerializeField]
+    private float baseAttackDamage;
+    public LayerMask enemyLayer;
+    public Vector2 hitSize;
+    private bool facingRight = true;
     void Start()
     {
         God = GameObject.Find("Deus").GetComponent<Deus>();
@@ -50,6 +55,12 @@ public class PlayerControls : MonoBehaviour
             TakeMoveInput();
             FlipCheck();
             TakeJumpAction();
+        }
+
+        if (Input.GetMouseButtonDown(0) && !GameObject.FindGameObjectWithTag("Spirit"))
+        {
+            Debug.Log("Attacking");
+            RegularAttackBool();
         }
     }
 
@@ -80,6 +91,7 @@ public class PlayerControls : MonoBehaviour
             _remainingJump--;
         }
     }
+
     //Swap Action function
     private void TakeSplitSwapAction()
     {
@@ -116,13 +128,62 @@ public class PlayerControls : MonoBehaviour
         }
     }
     
-    private void Attack()
+    private void RegularAttackBool()
     {
-        if(Input.GetMouseButtonDown(0) && !GameObject.FindGameObjectWithTag("Spirit"))
-        {
-            //Do attack (Oddly not specified what kind of attack, so I'm going to let this sit here)
-        }
+       _anima.SetBool("Attack", true);
+        
     }
+
+    public void ResetAttackBool()
+    {
+        _anima.SetBool("Attack", false);
+    }
+
+    private void SpiritSlash()
+    {
+
+    }
+
+    public void CreateHitbox()
+    {
+        if(facingRight)
+        {
+            if(attackHitbox == null)
+            {
+                attackHitbox = Physics2D.OverlapBoxAll(transform.position + new Vector3(0.4f, 0f, 0f), hitSize, 0f, enemyLayer);
+
+                if (attackHitbox.Length > 0)
+                {
+                    foreach (Collider2D col in attackHitbox)
+                    {
+                        Enemy enemy = col.GetComponent<Enemy>();
+                        enemy.TakeDamage(baseAttackDamage);
+                    }
+                }
+                attackHitbox = null;
+            }
+        }
+        else
+        {
+            if(attackHitbox == null)
+            {
+                attackHitbox = Physics2D.OverlapBoxAll(transform.position - new Vector3(0.4f, 0f, 0f), hitSize, 0f, enemyLayer);
+
+                if (attackHitbox.Length > 0)
+                {
+                    foreach (Collider2D col in attackHitbox)
+                    {
+                        Enemy enemy = col.GetComponent<Enemy>();
+                        enemy.TakeDamage(baseAttackDamage);
+                    }
+                }
+                attackHitbox = null;
+            }
+    
+        }
+
+    }
+
     private void ResetJumping()
     {
         _remainingJump = jumpLimit;
@@ -145,10 +206,12 @@ public class PlayerControls : MonoBehaviour
         SpriteRenderer spriteRen = GetComponent<SpriteRenderer>();
         if(moveVectorX < 0)
         {
+            facingRight = false;
             spriteRen.flipX = true;
         }
         else if(moveVectorX > 0)
         {
+            facingRight = true;
             spriteRen.flipX = false;
         }
     }
@@ -156,5 +219,8 @@ public class PlayerControls : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, pullDist);
+        Gizmos.color = Color.black;
+        Vector3 drawlocation = new Vector3(transform.position.x + 0.4f, transform.position.y, 0f);
+        Gizmos.DrawWireCube(drawlocation, hitSize);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
-public class GhostController : MonoBehaviour
+public class GhostController : Enemy
 {
     //Ghost Rigidbody
     Rigidbody2D ghostRb;
@@ -42,6 +42,7 @@ public class GhostController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        base._Health = health;
         //Get ghost rigidbody
         ghostRb = GetComponent<Rigidbody2D>();
 
@@ -147,23 +148,7 @@ public class GhostController : MonoBehaviour
         }
     }
 
-    //Method to damage the ghost
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
 
-        //If health is less than 0, kill the ghost
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    //Destroy the ghost gameObject
-    private void Die()
-    {
-        Destroy(gameObject);
-    }
 
     //Draw the search radius
     private void OnDrawGizmos()

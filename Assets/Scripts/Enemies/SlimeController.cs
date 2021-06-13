@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
-public class SlimeController : MonoBehaviour
+public class SlimeController : Enemy
 {
     Animator slimeAnim;
     Rigidbody2D slimeRb;
@@ -32,6 +32,7 @@ public class SlimeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        base._Health = health;
         slimeRb = GetComponent<Rigidbody2D>();
         startPosition = transform.position;
         slimeAnim = GetComponent<Animator>();
@@ -108,7 +109,6 @@ public class SlimeController : MonoBehaviour
     {
         //Check for nearby colliders on the player layer
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, trackRadius, playerLayer);
-        Debug.Log(targets.Length);
         //Check each of the colliders for the player tag
         if(targets.Length != 0)
         {
@@ -135,24 +135,6 @@ public class SlimeController : MonoBehaviour
         }
 
 
-    }
-
-    //Method to damage the slime
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-
-        //If health is less than 0, kill the slime
-        if(health <= 0)
-        {
-            Die();
-        }
-    }
-
-    //Destroy the slime gameObject
-    private void Die()
-    {
-        Destroy(gameObject);
     }
 
     private void OnDrawGizmos()

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CharacterStats:MonoBehaviour
 {
     public int maxHealth { get; internal set; } = 100;
@@ -23,6 +23,21 @@ public class CharacterStats:MonoBehaviour
         {
             curHealth += hpAdj;
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        curHealth -= damage;
+
+        if(curHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void ResetHealth()
     {
