@@ -84,12 +84,22 @@ public class GhostController : Enemy
         target = Physics2D.OverlapCircle(transform.position, trackRadius, playerMask);
         targetSpirit = Physics2D.OverlapCircle(transform.position, trackRadius, spiritMask);
 
-        if (target != null || targetSpirit != null)
+
+        if (target != null)
         {
-            if (target.gameObject.CompareTag("Player") || targetSpirit.gameObject.CompareTag("Spirit"))
+            if (target.gameObject.CompareTag("Player"))
             {
                 targetFound = true;
             }
+        }
+
+        if(targetSpirit != null)
+        {
+            if(targetSpirit.gameObject.CompareTag("Spirit"))
+            {
+                targetFound = true;
+            }
+
         }
         else
         {
