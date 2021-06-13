@@ -14,7 +14,7 @@ public class SlimeController : Enemy
     private float moveDelay;
     private float moveDelayTimer;
     [SerializeField]
-    private float slashDamage;
+    private int damage;
 
     GameObject target;
     [SerializeField]
@@ -33,6 +33,7 @@ public class SlimeController : Enemy
     void Start()
     {
         base._Health = health;
+        base._Damage = damage;
         slimeRb = GetComponent<Rigidbody2D>();
         startPosition = transform.position;
         slimeAnim = GetComponent<Animator>();

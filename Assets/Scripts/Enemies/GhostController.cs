@@ -13,7 +13,9 @@ public class GhostController : Enemy
     [SerializeField]
     private float health;
     [SerializeField]
+    private int damage;
     //Movement Variables
+    [SerializeField]
     private float moveSpeed;
     [SerializeField]
     private float movementDelay;
@@ -43,6 +45,7 @@ public class GhostController : Enemy
     void Start()
     {
         base._Health = health;
+        base._Damage = damage;
         //Get ghost rigidbody
         ghostRb = GetComponent<Rigidbody2D>();
 

@@ -5,6 +5,7 @@ public class PlayerMotor:MonoBehaviour
 {
     public float _moveSpeed;
     public float _jumpSpeed;
+    public float knockbackForce;
 
     private Rigidbody2D _rb;
     private float _moveVec;
@@ -43,5 +44,11 @@ public class PlayerMotor:MonoBehaviour
         {
             _rb.bodyType = RigidbodyType2D.Dynamic;
         }
+    }
+
+    public void Knockback(Vector3 hitdirection)
+    {
+        Debug.Log("Knockback");
+        _rb.AddForce(- hitdirection * knockbackForce, ForceMode2D.Impulse);
     }
 }

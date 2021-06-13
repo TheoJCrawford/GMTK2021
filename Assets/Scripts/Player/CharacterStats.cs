@@ -33,8 +33,8 @@ public class CharacterStats:MonoBehaviour
     public void TakeDamage(int damage)
     {
         curHealth -= damage;
-
-        if(curHealth <= 0)
+        Debug.Log("Player take damage called, health is now," + curHealth);
+        if (curHealth <= 0)
         {
             Die();
         }

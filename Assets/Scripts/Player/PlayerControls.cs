@@ -14,6 +14,8 @@ public class PlayerControls : MonoBehaviour
     private PlayerMotor _motor;
     //Player Animator
     private Animator _anima;
+    //Player Stats
+    private CharacterStats _stats;
     //Is this object being controlled
     private bool _inControl;
     //Distance the spirit is returnable
@@ -29,11 +31,14 @@ public class PlayerControls : MonoBehaviour
     public LayerMask enemyLayer;
     public Vector2 hitSize;
     private bool facingRight = true;
+    [SerializeField]
+    private GameObject spiritSlashPrefab;
     void Start()
     {
         God = GameObject.Find("Deus").GetComponent<Deus>();
         _motor = GetComponent<PlayerMotor>();
         _anima = GetComponent<Animator>();
+        _stats = GetComponent<CharacterStats>();
         ResetJumping();
         _inControl = true;
     }
@@ -62,6 +67,10 @@ public class PlayerControls : MonoBehaviour
             Debug.Log("Attacking");
             RegularAttackBool();
         }
+        else if (Input.GetMouseButtonDown(1) && !GameObject.FindGameObjectWithTag("Spirit"))
+        {
+            SpiritSlash();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -72,6 +81,13 @@ public class PlayerControls : MonoBehaviour
             ResetJumping();
         }
 
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Collided with enemy");
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            _stats.TakeDamage(enemy.bumpDamage);
+            _motor.Knockback(collision.contacts[0].point);
+        }
     }
     //Gets the X input vector
     private void TakeMoveInput()
@@ -141,7 +157,18 @@ public class PlayerControls : MonoBehaviour
 
     private void SpiritSlash()
     {
-
+        _anima.SetBool("Attack", true);
+        Vector3 projectileOffset = new Vector3(0.5f, 0f, 0f);
+        if(facingRight)
+        {
+            GameObject spiritSlash = Instantiate(spiritSlashPrefab, transform.position + projectileOffset, transform.rotation);
+        }
+        else
+        {
+            Quaternion projectileRotation = transform.rotation;
+            projectileRotation *= Quaternion.Euler(0f, 0f, 180);
+            GameObject spiritSlash = Instantiate(spiritSlashPrefab, transform.position - projectileOffset, projectileRotation);
+        }
     }
 
     public void CreateHitbox()
