@@ -2,7 +2,7 @@
 
 public class CharacterStats:MonoBehaviour
 {
-    public int maxHealth { get; internal set; } = 50;
+    public int maxHealth { get; internal set; } = 100;
     public int curHealth { get; internal set; }
 
     public void SetMaxHealth(int hp)

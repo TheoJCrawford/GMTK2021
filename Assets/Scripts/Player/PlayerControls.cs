@@ -57,6 +57,7 @@ public class PlayerControls : MonoBehaviour
     {
         if (Physics2D.Raycast(transform.position, Vector2.down))
         {
+            _anima.SetBool("IsJumping", false);
             ResetJumping();
         }
 
@@ -65,6 +66,7 @@ public class PlayerControls : MonoBehaviour
     private void TakeMoveInput()
     {
         moveVectorX = Input.GetAxis("Horizontal");
+        _anima.SetFloat("Speed", Mathf.Abs(moveVectorX));
         _motor.SetMovement(moveVectorX);
     }
 
@@ -73,6 +75,7 @@ public class PlayerControls : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && _remainingJump > 0)
         {
+            _anima.SetBool("IsJumping", true);
             _motor.EngageJump();
             _remainingJump--;
         }
