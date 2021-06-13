@@ -14,6 +14,8 @@ public class PlayerControls : MonoBehaviour
     private PlayerMotor _motor;
     //Player Animator
     private Animator _anima;
+    //Player Stats
+    private CharacterStats _stats;
     //Is this object being controlled
     private bool _inControl;
     //Distance the spirit is returnable
@@ -23,12 +25,20 @@ public class PlayerControls : MonoBehaviour
     private int _remainingJump;
     private float moveVectorX;
 
-
+    private Collider2D[] attackHitbox;
+    [SerializeField]
+    private float baseAttackDamage;
+    public LayerMask enemyLayer;
+    public Vector2 hitSize;
+    private bool facingRight = true;
+    [SerializeField]
+    private GameObject spiritSlashPrefab;
     void Start()
     {
         God = GameObject.Find("Deus").GetComponent<Deus>();
         _motor = GetComponent<PlayerMotor>();
         _anima = GetComponent<Animator>();
+        _stats = GetComponent<CharacterStats>();
         ResetJumping();
         _inControl = true;
     }
@@ -51,6 +61,16 @@ public class PlayerControls : MonoBehaviour
             FlipCheck();
             TakeJumpAction();
         }
+
+        if (Input.GetMouseButtonDown(0) && !GameObject.FindGameObjectWithTag("Spirit"))
+        {
+            Debug.Log("Attacking");
+            RegularAttackBool();
+        }
+        else if (Input.GetMouseButtonDown(1) && !GameObject.FindGameObjectWithTag("Spirit"))
+        {
+            SpiritSlash();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -61,6 +81,13 @@ public class PlayerControls : MonoBehaviour
             ResetJumping();
         }
 
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Collided with enemy");
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            _stats.TakeDamage(enemy.bumpDamage);
+            _motor.Knockback(collision.contacts[0].point);
+        }
     }
     //Gets the X input vector
     private void TakeMoveInput()
@@ -80,6 +107,7 @@ public class PlayerControls : MonoBehaviour
             _remainingJump--;
         }
     }
+
     //Swap Action function
     private void TakeSplitSwapAction()
     {
@@ -116,13 +144,73 @@ public class PlayerControls : MonoBehaviour
         }
     }
     
-    private void Attack()
+    private void RegularAttackBool()
     {
-        if(Input.GetMouseButtonDown(0) && !GameObject.FindGameObjectWithTag("Spirit"))
+       _anima.SetBool("Attack", true);
+        
+    }
+
+    public void ResetAttackBool()
+    {
+        _anima.SetBool("Attack", false);
+    }
+
+    private void SpiritSlash()
+    {
+        _anima.SetBool("Attack", true);
+        Vector3 projectileOffset = new Vector3(0.5f, 0f, 0f);
+        if(facingRight)
         {
-            //Do attack (Oddly not specified what kind of attack, so I'm going to let this sit here)
+            GameObject spiritSlash = Instantiate(spiritSlashPrefab, transform.position + projectileOffset, transform.rotation);
+        }
+        else
+        {
+            Quaternion projectileRotation = transform.rotation;
+            projectileRotation *= Quaternion.Euler(0f, 0f, 180);
+            GameObject spiritSlash = Instantiate(spiritSlashPrefab, transform.position - projectileOffset, projectileRotation);
         }
     }
+
+    public void CreateHitbox()
+    {
+        if(facingRight)
+        {
+            if(attackHitbox == null)
+            {
+                attackHitbox = Physics2D.OverlapBoxAll(transform.position + new Vector3(0.4f, 0f, 0f), hitSize, 0f, enemyLayer);
+
+                if (attackHitbox.Length > 0)
+                {
+                    foreach (Collider2D col in attackHitbox)
+                    {
+                        Enemy enemy = col.GetComponent<Enemy>();
+                        enemy.TakeDamage(baseAttackDamage);
+                    }
+                }
+                attackHitbox = null;
+            }
+        }
+        else
+        {
+            if(attackHitbox == null)
+            {
+                attackHitbox = Physics2D.OverlapBoxAll(transform.position - new Vector3(0.4f, 0f, 0f), hitSize, 0f, enemyLayer);
+
+                if (attackHitbox.Length > 0)
+                {
+                    foreach (Collider2D col in attackHitbox)
+                    {
+                        Enemy enemy = col.GetComponent<Enemy>();
+                        enemy.TakeDamage(baseAttackDamage);
+                    }
+                }
+                attackHitbox = null;
+            }
+    
+        }
+
+    }
+
     private void ResetJumping()
     {
         _remainingJump = jumpLimit;
@@ -145,10 +233,12 @@ public class PlayerControls : MonoBehaviour
         SpriteRenderer spriteRen = GetComponent<SpriteRenderer>();
         if(moveVectorX < 0)
         {
+            facingRight = false;
             spriteRen.flipX = true;
         }
         else if(moveVectorX > 0)
         {
+            facingRight = true;
             spriteRen.flipX = false;
         }
     }
@@ -156,5 +246,8 @@ public class PlayerControls : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, pullDist);
+        Gizmos.color = Color.black;
+        Vector3 drawlocation = new Vector3(transform.position.x + 0.4f, transform.position.y, 0f);
+        Gizmos.DrawWireCube(drawlocation, hitSize);
     }
 }

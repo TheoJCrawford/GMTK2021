@@ -18,6 +18,10 @@ public class PlayerMotorEditor : Editor
         GUILayout.Label("Jump speed: ", GUILayout.ExpandWidth(false));
         motor._jumpSpeed = EditorGUILayout.FloatField(motor._jumpSpeed);
         GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Knockback Force: ", GUILayout.ExpandWidth(false));
+        motor.knockbackForce = EditorGUILayout.FloatField(motor.knockbackForce);
+        GUILayout.EndHorizontal();
     }
 
 }
