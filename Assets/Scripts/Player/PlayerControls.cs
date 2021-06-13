@@ -77,14 +77,15 @@ public class PlayerControls : MonoBehaviour
                 }
                 else
                 {
+                    GameObject.Find("Deus").GetComponent<Dues>().ChangeController();
                     GameObject.Destroy(GameObject.FindGameObjectWithTag("Spirit"));
                 }
             }
             if(isMainChar && GameObject.FindGameObjectWithTag("Spirit") == null)
             {
                 GameObject.Instantiate<GameObject>(otherHalf, transform.position, otherHalf.transform.rotation);
+                GameObject.Find("Deus").GetComponent<Dues>().ChangeController();
             }
-            GameObject.Find("Deus").GetComponent<Dues>().ChangeController();
         }
     }
     
