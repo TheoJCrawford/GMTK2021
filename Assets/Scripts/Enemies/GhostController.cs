@@ -84,10 +84,12 @@ public class GhostController : Enemy
         target = Physics2D.OverlapCircle(transform.position, trackRadius, playerMask);
         targetSpirit = Physics2D.OverlapCircle(transform.position, trackRadius, spiritMask);
 
-        //Set target boolean
         if (target != null || targetSpirit != null)
         {
-            targetFound = true;
+            if (target.gameObject.CompareTag("Player") || targetSpirit.gameObject.CompareTag("Spirit"))
+            {
+                targetFound = true;
+            }
         }
         else
         {
@@ -101,13 +103,7 @@ public class GhostController : Enemy
     {
         CheckTurn();
         //If a player target has been found, set the targetPosition to the target's position
-        if (targetFound)
-        {
-            targetPosition = target.transform.position;
-        }
-        //If no current player target, continue moving the ghost towards the target position
-        //Set a new random target position once arrived at the old target position
-        else
+        if (!targetFound)
         {
             if (transform.position.x >= targetPosition.x - 0.5 && transform.position.x <= targetPosition.x + 0.05 && transform.position.y >= targetPosition.y - 0.5 && transform.position.y <= targetPosition.y + 0.5)
             {
@@ -121,6 +117,13 @@ public class GhostController : Enemy
                 float targetY = Random.Range(startPosition.y - roamDistance, startPosition.y + roamDistance);
                 targetPosition = new Vector2(targetX, targetY);
             }
+            
+        }
+        //If no current player target, continue moving the ghost towards the target position
+        //Set a new random target position once arrived at the old target position
+        else
+        {
+            targetPosition = target.transform.position;
         }
         //Move the ghost towards the target position if not arrived
         if(!destinationReached)
