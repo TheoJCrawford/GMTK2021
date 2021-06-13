@@ -83,11 +83,15 @@ public class GhostController : Enemy
         //Check for nearby targets within a radius of the ghost
         target = Physics2D.OverlapCircle(transform.position, trackRadius, playerMask);
         targetSpirit = Physics2D.OverlapCircle(transform.position, trackRadius, spiritMask);
-
+        Debug.Log(target);
+        Debug.Log(targetSpirit);
         //Set target boolean
         if (target != null || targetSpirit != null)
         {
-            targetFound = true;
+            if (target.gameObject.CompareTag("Player") || targetSpirit.gameObject.CompareTag("Spirit"))
+            {
+                targetFound = true;
+            }
         }
         else
         {
