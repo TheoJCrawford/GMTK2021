@@ -21,6 +21,7 @@ public class PlayerControls : MonoBehaviour
     //Amount of jumps allowed
     public int jumpLimit = 1;
     private int _remainingJump;
+    private float moveVectorX;
 
 
     void Start()
@@ -47,6 +48,7 @@ public class PlayerControls : MonoBehaviour
         else
         {
             TakeMoveInput();
+            FlipCheck();
             TakeJumpAction();
         }
     }
@@ -62,7 +64,8 @@ public class PlayerControls : MonoBehaviour
     //Gets the X input vector
     private void TakeMoveInput()
     {
-        _motor.SetMovement(Input.GetAxis("Horizontal"));
+        moveVectorX = Input.GetAxis("Horizontal");
+        _motor.SetMovement(moveVectorX);
     }
 
     //Jump Function
@@ -131,6 +134,19 @@ public class PlayerControls : MonoBehaviour
         else
         {
             _inControl = true;
+        }
+    }
+
+    private void FlipCheck()
+    {
+        SpriteRenderer spriteRen = GetComponent<SpriteRenderer>();
+        if(moveVectorX < 0)
+        {
+            spriteRen.flipX = true;
+        }
+        else if(moveVectorX > 0)
+        {
+            spriteRen.flipX = false;
         }
     }
 
