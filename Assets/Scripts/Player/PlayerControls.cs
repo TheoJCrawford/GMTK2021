@@ -172,6 +172,7 @@ public class PlayerControls : MonoBehaviour
     private void ResetAttackBool()
     {
         _anima.SetBool("Attack", false);
+        Debug.Log("Attack bool reset");
     }
 
     private void SpiritSlash()
