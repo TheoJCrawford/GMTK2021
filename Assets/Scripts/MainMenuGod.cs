@@ -9,7 +9,7 @@ public class MainMenuGod : MonoBehaviour
     }
     public void ReturnMain()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene(0);
     }
 
     public void ExitGame()
