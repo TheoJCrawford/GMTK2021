@@ -23,6 +23,7 @@ public class SpiritSwitch : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Spirit"))
         {
+
             sprite.sprite = Resources.Load("Sprites/Buttons/Spirit_Pressed", typeof(Sprite)) as Sprite;
             foreach (GameObject gate in gates)
             {

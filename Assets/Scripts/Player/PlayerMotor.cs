@@ -49,6 +49,6 @@ public class PlayerMotor:MonoBehaviour
     public void Knockback(Vector3 hitdirection)
     {
         Debug.Log("Knockback");
-        _rb.AddForce(- hitdirection * knockbackForce, ForceMode2D.Impulse);
+        _rb.AddForce(-hitdirection * knockbackForce, ForceMode2D.Impulse);
     }
 }
