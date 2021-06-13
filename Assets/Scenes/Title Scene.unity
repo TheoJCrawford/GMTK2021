@@ -598,7 +598,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Designer/Programmer: ProphercyToad\nArtist: Jazzals\nProgrammer/Artist:
+  m_Text: "Designer/Programmer: ProphecyToad\nArtist: Jazzals\nProgrammer/Artist:
     Nero119\n\nThanks to:\n\nMaaot for the Mossy Cavern\u200B tileset\n"
 --- !u!222 &1745598765
 CanvasRenderer:
