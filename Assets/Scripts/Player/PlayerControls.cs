@@ -4,18 +4,28 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMotor), typeof(Animator))]
 public class PlayerControls : MonoBehaviour
 {
+    private Deus God;
+    //Spirit Object
     public GameObject otherHalf;
     public bool isMainChar;
     public bool inControl => _inControl;
 
+    //Player Movement Script
     private PlayerMotor _motor;
+    //Player Animator
     private Animator _anima;
+    //Is this object being controlled
     private bool _inControl;
+    //Distance the spirit is returnable
     public float pullDist = 4f;
+    //Amount of jumps allowed
     public int jumpLimit = 1;
     private int _remainingJump;
+
+
     void Start()
     {
+        God = GameObject.Find("Deus").GetComponent<Deus>();
         _motor = GetComponent<PlayerMotor>();
         _anima = GetComponent<Animator>();
         ResetJumping();
@@ -25,11 +35,15 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Checks for shift press to change control
         TakeSplitSwapAction();
+
+        //If not being controlled, turns the player's movespeed to 0
         if (_inControl == false)
         {
             _motor.SetMovement();
         }
+        //If being controlled, take movement and jump actions
         else
         {
             TakeMoveInput();
@@ -45,17 +59,13 @@ public class PlayerControls : MonoBehaviour
         }
 
     }
+    //Gets the X input vector
     private void TakeMoveInput()
     {
-        if (Input.GetAxis("Horizontal") == 0)
-        {
-            _motor.SetMovement();
-        }
-        else
-        {
-            _motor.SetMovement(Input.GetAxis("Horizontal"));
-        }
+        _motor.SetMovement(Input.GetAxis("Horizontal"));
     }
+
+    //Jump Function
     private void TakeJumpAction()
     {
         if (Input.GetKeyDown(KeyCode.Space) && _remainingJump > 0)
@@ -64,27 +74,38 @@ public class PlayerControls : MonoBehaviour
             _remainingJump--;
         }
     }
+    //Swap Action function
     private void TakeSplitSwapAction()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && _inControl)
         {
-            
+            //If controlling the spirit
             if (!isMainChar)
             {
-                if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= pullDist)
-                {
-
-                }
-                else
-                {
-                    GameObject.Find("Deus").GetComponent<Dues>().ChangeController();
+                //If further than the pull distance
+                if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) <= pullDist)
+                { 
+                    //Change controls back to the player, destroy the spirit object
+                    God.ChangeController();
                     GameObject.Destroy(GameObject.FindGameObjectWithTag("Spirit"));
                 }
             }
-            if(isMainChar && GameObject.FindGameObjectWithTag("Spirit") == null)
+            //If controlling the player
+            else
             {
-                GameObject.Instantiate<GameObject>(otherHalf, transform.position, otherHalf.transform.rotation);
-                GameObject.Find("Deus").GetComponent<Dues>().ChangeController();
+                //If no instantiated spirit
+                if (GameObject.FindGameObjectWithTag("Spirit") == null)
+                {
+                    GameObject.Instantiate<GameObject>(otherHalf, transform.position, otherHalf.transform.rotation);
+                    God.ChangeController();
+                }
+                else
+                {
+                    if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Spirit").transform.position) <= pullDist)
+                    {
+                        GameObject.Destroy(GameObject.FindGameObjectWithTag("Spirit"));
+                    }
+                }
             }
         }
     }
