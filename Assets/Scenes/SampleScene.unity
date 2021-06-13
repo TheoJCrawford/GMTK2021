@@ -371,6 +371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Testie Char
       objectReference: {fileID: 0}
+    - target: {fileID: 985514610827762968, guid: 344808516dca92149ba9429ba3bc5cd0, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 985514610827762969, guid: 344808516dca92149ba9429ba3bc5cd0, type: 3}
       propertyPath: m_RootOrder
       value: 1
