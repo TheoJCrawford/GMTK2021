@@ -73,7 +73,7 @@ public class PlayerControls : MonoBehaviour
             {
                 if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= pullDist)
                 {
-                    
+
                 }
                 else
                 {
@@ -111,5 +111,10 @@ public class PlayerControls : MonoBehaviour
         {
             _inControl = true;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, pullDist);
     }
 }
