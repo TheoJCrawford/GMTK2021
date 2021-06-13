@@ -19,11 +19,6 @@ public class CameraControls : MonoBehaviour
     // Update is called once per frame
     private void LateUpdate()
     {
-        
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            ChangeTarget();
-        }
         if (target == null)
         {
             target = GameObject.FindGameObjectWithTag("Player").transform;
