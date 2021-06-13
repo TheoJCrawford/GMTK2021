@@ -22,7 +22,7 @@ public class PlayerMotor:MonoBehaviour
     }
     private void EnactMovement()
     {
-        _rb.AddForce(new Vector2( _moveVec, 0), ForceMode2D.Force);
+        _rb.velocity = new Vector2( _moveVec, _rb.velocity.y);
     }
     public void SetMovement(float move = 0)
     {
